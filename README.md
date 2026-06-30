@@ -10,13 +10,17 @@ Example: Paul Graham's epic essay,
   <tr>
     <td width="50%">
       <strong>Before</strong><br>
-      <sub>Plain essay page</sub><br>
-      <video src="docs/media/how-to-do-great-work-before.mp4" controls muted loop playsinline width="100%"></video>
+      <a href="docs/media/how-to-do-great-work-before.mp4">
+        <img src="docs/media/how-to-do-great-work-before.gif" alt="Before: plain essay page" width="100%">
+      </a><br>
+      <sub>Plain essay page. Click to open the full video.</sub>
     </td>
     <td width="50%">
       <strong>After</strong><br>
-      <sub>Cinematic Reading Edition</sub><br>
-      <video src="docs/media/how-to-do-great-work-after.mp4" controls muted loop playsinline width="100%"></video>
+      <a href="docs/media/how-to-do-great-work-after.mp4">
+        <img src="docs/media/how-to-do-great-work-after.gif" alt="After: cinematic Reading Edition" width="100%">
+      </a><br>
+      <sub>Cinematic Reading Edition. Click to open the full video.</sub>
     </td>
   </tr>
 </table>
