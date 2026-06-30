@@ -32,43 +32,83 @@ One source file becomes a local Reading Edition with:
 - light and dark mode
 - a static site you can run locally or deploy to Vercel
 
-## Install
+## Quick Start
 
-Clone the repo:
+### Claude Code
+
+Install from the public repo as a Claude Code plugin. Run these as two separate
+Claude Code messages:
+
+```text
+/plugin marketplace add ryannli/immersive-reading
+```
+
+Then:
+
+```text
+/plugin install immersive-reading@immersive-reading
+```
+
+Use it in Claude Code with:
+
+```text
+/immersive-reading:immersive-reading
+```
+
+### Codex
+
+Codex uses this repo as a skill, not a plugin. Install it with:
+
+```text
+$skill-installer https://github.com/ryannli/immersive-reading/tree/main/skills/immersive-reading
+```
+
+Or use the npx installer:
+
+```bash
+npx --yes github:ryannli/immersive-reading install codex
+```
+
+### Local Agents
+
+The `npx` commands run a small installer that copies `skills/immersive-reading`
+into the target skills folder. They do not install app dependencies.
+
+For Claude Code without the plugin flow:
+
+```bash
+npx --yes github:ryannli/immersive-reading install claude
+```
+
+For a generic `SKILL.md`-compatible agent:
+
+```bash
+npx --yes github:ryannli/immersive-reading install agent
+```
+
+### Cursor
+
+Install the skill resources and a project rule into the current project:
+
+```bash
+npx --yes github:ryannli/immersive-reading install cursor .
+```
+
+### Antigravity CLI
+
+```bash
+agy plugin install https://github.com/ryannli/immersive-reading.git
+```
+
+### Local Clone
 
 ```bash
 git clone https://github.com/ryannli/immersive-reading.git
 cd immersive-reading
-```
-
-Install for Claude Code:
-
-```bash
-sh setup claude
-```
-
-Install for Codex:
-
-```bash
 sh setup codex
 ```
 
-Install for a generic `SKILL.md`-compatible agent:
-
-```bash
-sh setup agent
-```
-
-Or copy the skill folder yourself:
-
-```bash
-mkdir -p ~/.claude/skills ~/.codex/skills ~/.agents/skills
-cp -R skills/immersive-reading ~/.claude/skills/immersive-reading
-cp -R skills/immersive-reading ~/.codex/skills/immersive-reading
-cp -R skills/immersive-reading ~/.agents/skills/immersive-reading
-```
-
-## First Run
+## First Prompt
 
 Open a new Claude Code or Codex session and ask:
 

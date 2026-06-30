@@ -9,6 +9,7 @@ Usage:
   sh setup codex
   sh setup claude
   sh setup agent
+  sh setup cursor [project-directory]
   sh setup local [skills-directory]
   sh setup path <skills-directory>
 
@@ -16,6 +17,7 @@ Modes:
   codex   Install to ${CODEX_HOME:-$HOME/.codex}/skills.
   claude  Install to ${CLAUDE_HOME:-$HOME/.claude}/skills.
   agent   Install to ${AGENTS_HOME:-$HOME/.agents}/skills.
+  cursor  Install into a project's .cursor/rules and .cursor/skills folders.
   local   Install to a project-local skills directory. Defaults to ./.agents/skills.
   path    Install to an explicit skills directory.
 
@@ -43,6 +45,49 @@ case "$MODE" in
     ;;
   agent)
     TARGET_ROOT="${AGENTS_HOME:-$HOME/.agents}/skills"
+    ;;
+  cursor)
+    PROJECT_ROOT=$(absolute_path "${2:-.}")
+    CURSOR_SKILLS="$PROJECT_ROOT/.cursor/skills"
+    CURSOR_RULES="$PROJECT_ROOT/.cursor/rules"
+    TARGET="$CURSOR_SKILLS/immersive-reading"
+    RULE_TARGET="$CURSOR_RULES/immersive-reading.md"
+
+    if [ ! -d "$SKILL_SRC" ]; then
+      echo "Skill source not found: $SKILL_SRC" >&2
+      exit 1
+    fi
+
+    if [ -e "$TARGET" ]; then
+      echo "Target already exists: $TARGET" >&2
+      echo "Remove it first if you want to reinstall." >&2
+      exit 1
+    fi
+
+    if [ -e "$RULE_TARGET" ]; then
+      echo "Target already exists: $RULE_TARGET" >&2
+      echo "Remove it first if you want to reinstall." >&2
+      exit 1
+    fi
+
+    mkdir -p "$CURSOR_SKILLS" "$CURSOR_RULES"
+    cp -R "$SKILL_SRC" "$TARGET"
+    cat > "$RULE_TARGET" <<'RULE'
+# Immersive Reading
+
+When the user asks to convert long-form material into an interactive reading website, read and follow `.cursor/skills/immersive-reading/SKILL.md`.
+
+Use the bundled template, references, and scripts from `.cursor/skills/immersive-reading/` instead of recreating the reader from scratch.
+RULE
+
+    echo "Installed Immersive Reading for Cursor in:"
+    echo "  $PROJECT_ROOT"
+    echo
+    echo "Rule:"
+    echo "  $RULE_TARGET"
+    echo "Skill resources:"
+    echo "  $TARGET"
+    exit 0
     ;;
   local)
     TARGET_ROOT=$(absolute_path "${2:-.agents/skills}")
