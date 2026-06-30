@@ -1,82 +1,139 @@
-# Immersive Reading Skill
+# Immersive Reading
 
-Turn long-form learning material into a polished interactive reading edition.
+Turn any serious long-form source into a beautiful, interactive Reading Edition.
 
-This repository packages an Agent Skill plus a reusable static reader template. It is designed for coding agents that support the Agent Skills `SKILL.md` format, including OpenAI Codex and Claude Code-compatible skill clients.
+Most learning material gets flattened into a summary. Immersive Reading does the
+opposite: it helps a coding agent preserve the shape of the original source,
+then wraps it in a polished reader with chapters, section transitions, quotes,
+search, highlights, notes, optional bilingual text, light/dark mode, and clear
+source attribution.
 
-## What It Builds
+This repository packages an Agent Skill plus a reusable static reader template.
+It is designed for OpenAI Codex, Claude Code-compatible skill clients, and other
+coding agents that understand the `SKILL.md` skill format.
 
-Given a source article, essay, blog post, transcript, note, or paper, the skill helps an agent generate a static site with:
+## Why It Exists
 
-- chapter and section-based reading flow
-- source attribution and original link
-- search
-- highlights
-- notes and copyable notes
-- optional bilingual line-by-line reading mode
-- light and dark mode
-- mobile notice for limited annotation functionality
-- immersive 3D particle background and scroll-driven transitions
+A great reading edition should do three jobs:
 
-The bundled template intentionally excludes production analytics, dashboards, Upstash/Redis, project-specific domains, and Paul Graham-specific content.
+1. Give the source a memorable structure without pretending the AI wrote it.
+2. Make the first successful build feel obvious, even for a new user.
+3. Keep copyright and attribution decisions explicit before any full-text copy.
+
+Immersive Reading packages those decisions into a repeatable workflow. Give the
+agent a source, rights context, language preference, and output folder; the skill
+guides it through content conversion, scaffolding, validation, preview, and
+optional deployment.
+
+## See It Work
+
+Ask your agent:
+
+```text
+Use $immersive-reading to convert ./article.md into a Reading Edition.
+I wrote the source material, so full-text reproduction is allowed.
+Add Chinese bilingual mode.
+Output it to ./my-reading-edition.
+```
+
+The agent should:
+
+- ask only for missing essentials
+- create chapters and sections when the source does not already have them
+- choose short anchor quotes for each section
+- generate a valid `article-data.js`
+- scaffold the reader template
+- run schema and browser smoke checks
+- preserve attribution and source-linking
+
+If reproduction rights are unclear, the skill should build an excerpt-and-study
+guide edition instead of mirroring the full source.
+
+## Quick Start
+
+Clone the repo, then install the skill into your preferred agent:
+
+```bash
+git clone https://github.com/ryannli/immersive-reading.git
+cd immersive-reading
+sh setup codex
+```
+
+Start a new Codex thread and ask:
+
+```text
+Use $immersive-reading to turn this long article into an immersive reading edition.
+```
+
+For a repo-local skill directory or another Agent Skills-compatible client:
+
+```bash
+sh setup local
+```
+
+This installs to `./.agents/skills/immersive-reading` in your current project.
+If your client uses a different skills directory, pass it explicitly:
+
+```bash
+sh setup path /path/to/your/skills-directory
+```
+
+## First Local Demo
+
+You can generate a sample reader without providing new content:
+
+```bash
+node skills/immersive-reading/scripts/scaffold-reader.mjs \
+  --article-data skills/immersive-reading/assets/reader-template/src/articles/sample-reading/data.js \
+  --out /tmp/immersive-reading-demo \
+  --force
+```
+
+Then preview it:
+
+```bash
+cd /tmp/immersive-reading-demo
+python3 -m http.server 8791
+```
+
+Open `http://127.0.0.1:8791`.
+
+## What You Get
+
+- A finished static reader, not just generated copy
+- Chapter and section-based reading flow
+- Search
+- Highlights
+- Notes and copyable notes
+- Optional bilingual line-by-line reading mode
+- Light and dark mode
+- Mobile notice for limited annotation functionality
+- Source attribution and original-link affordances
+- 3D particle background and scroll-driven transitions
+- Validation scripts for generated article data and the reader template
+
+The bundled template intentionally excludes production analytics, dashboards,
+Upstash/Redis, private domains, project-specific secrets, and Paul
+Graham-specific content.
 
 ## Repository Layout
 
 ```text
+setup
 skills/
   immersive-reading/
     SKILL.md
     agents/openai.yaml
     assets/reader-template/
-    scripts/
     references/
-```
-
-## Install For OpenAI Codex
-
-Copy or symlink the skill folder into your Codex skills directory:
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/immersive-reading ~/.codex/skills/immersive-reading
-```
-
-Then start a new Codex thread and ask:
-
-```text
-Use $immersive-reading to convert this article into an immersive reading edition.
-```
-
-## Install For Claude Code And Other Agent Skills Clients
-
-This repository uses the standard Agent Skills folder shape: a skill directory containing `SKILL.md`, optional `agents/`, `scripts/`, `references/`, and `assets/`.
-
-For Claude Code or another skills-compatible coding agent, install or point the client at:
-
-```text
-skills/immersive-reading
-```
-
-If your client has a configured skills directory, copy `skills/immersive-reading` there. If it supports repo-local skills, open this repository and invoke `$immersive-reading`.
-
-## Example Use
-
-```text
-Use $immersive-reading to build a reading edition from this Markdown file.
-I wrote the source material, so full-text reproduction is allowed.
-Do not add bilingual mode.
-Output it to ./my-reading-edition.
-```
-
-```text
-Use $immersive-reading to convert this blog post into a study-guide edition.
-I do not own the copyright, so use summaries and short excerpts only.
-Add English + Chinese bilingual study mode.
+    scripts/
 ```
 
 ## Content Rights
 
-The skill asks whether the user has rights to reproduce the full source text. If rights are unclear, it should generate a summary/excerpt study guide instead of mirroring the full work.
+The skill asks whether the user has rights to reproduce the full source text.
+If rights are unclear, it should generate a summary, excerpt, or study-guide
+edition instead of copying the full work.
 
 Always verify attribution before publishing.
 
@@ -113,4 +170,5 @@ node skills/immersive-reading/scripts/scaffold-reader.mjs \
 
 ## License
 
-MIT. Generated source editions remain subject to the rights of their original source material.
+MIT. Generated source editions remain subject to the rights of their original
+source material.

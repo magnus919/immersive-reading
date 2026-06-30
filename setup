@@ -1,0 +1,77 @@
+#!/usr/bin/env sh
+set -eu
+
+usage() {
+  cat <<'USAGE'
+Install the Immersive Reading skill.
+
+Usage:
+  sh setup codex
+  sh setup local [skills-directory]
+  sh setup path <skills-directory>
+
+Modes:
+  codex   Install to ${CODEX_HOME:-$HOME/.codex}/skills.
+  local   Install to a project-local skills directory. Defaults to ./.agents/skills.
+  path    Install to an explicit skills directory.
+
+The script will not overwrite an existing immersive-reading skill folder.
+USAGE
+}
+
+absolute_path() {
+  case "$1" in
+    /*) printf '%s\n' "$1" ;;
+    *) printf '%s\n' "$PWD/$1" ;;
+  esac
+}
+
+ROOT_DIR=$(CDPATH= cd "$(dirname "$0")" && pwd)
+SKILL_SRC="$ROOT_DIR/skills/immersive-reading"
+MODE="${1:-}"
+
+case "$MODE" in
+  codex)
+    TARGET_ROOT="${CODEX_HOME:-$HOME/.codex}/skills"
+    ;;
+  local)
+    TARGET_ROOT=$(absolute_path "${2:-.agents/skills}")
+    ;;
+  path)
+    if [ -z "${2:-}" ]; then
+      usage
+      exit 1
+    fi
+    TARGET_ROOT=$(absolute_path "$2")
+    ;;
+  -h|--help|help|"")
+    usage
+    exit 0
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
+esac
+
+TARGET="$TARGET_ROOT/immersive-reading"
+
+if [ ! -d "$SKILL_SRC" ]; then
+  echo "Skill source not found: $SKILL_SRC" >&2
+  exit 1
+fi
+
+if [ -e "$TARGET" ]; then
+  echo "Target already exists: $TARGET" >&2
+  echo "Remove it first if you want to reinstall." >&2
+  exit 1
+fi
+
+mkdir -p "$TARGET_ROOT"
+cp -R "$SKILL_SRC" "$TARGET"
+
+echo "Installed Immersive Reading skill to:"
+echo "  $TARGET"
+echo
+echo "Try this in a new agent session:"
+echo "  Use \$immersive-reading to convert this long article into a Reading Edition."
