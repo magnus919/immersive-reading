@@ -17,7 +17,6 @@ const article = {
   source: {
     label: "Source material",
     authorLine: "by Author Name",
-    copyright: "Source material belongs to its original author",
     url: "https://example.com/original",
     urlLabel: "example.com/original"
   },
@@ -42,7 +41,7 @@ const article = {
   footer: {
     quote: { en: "Closing quote." },
     quoteEmphasis: "",
-    credit: "Generated as an independent reading edition. Verify rights and source attribution before publishing."
+    credit: "Generated as a reading edition for close study."
   },
   chapters: [],
   footnotes: {}
@@ -113,5 +112,5 @@ Do not claim the translation is official unless the source says so.
 - Prefer chapter titles that name the learning function, not vague moods.
 - Use section `take` values as claims the reader can remember.
 - Keep `quote` short enough to work as a visual anchor.
-- If source paragraphs are long, preserve paragraph boundaries when full reproduction is allowed; otherwise summarize tightly.
+- If source paragraphs are long, preserve paragraph boundaries or summarize tightly depending on the reading goal.
 - Compute `words` from the primary-language text; approximate is acceptable, but do not leave it as zero.

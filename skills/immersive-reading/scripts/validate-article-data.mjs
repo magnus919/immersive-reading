@@ -45,8 +45,8 @@ if (!article.id || !/^[a-z0-9-]+$/.test(article.id || "")) errors.push("article.
 requireText("title", article.title);
 requireText("description", article.description);
 if (!article.author) warnings.push("article.author is empty");
+if (!article.source?.label) warnings.push("article.source.label is empty");
 if (!article.source?.url) warnings.push("article.source.url is empty");
-if (!article.source?.copyright) warnings.push("article.source.copyright is empty");
 
 const languages = Array.isArray(article.languages) ? article.languages : [];
 if (!languages.length) errors.push("article.languages must include at least one language");

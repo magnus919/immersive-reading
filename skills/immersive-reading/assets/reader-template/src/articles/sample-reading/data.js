@@ -12,7 +12,6 @@ const article = {
   source: {
     label: "Source material",
     authorLine: "by Source Author",
-    copyright: "Source material belongs to its original author",
     url: "https://example.com/original",
     urlLabel: "example.com/original"
   },
@@ -46,7 +45,7 @@ const article = {
       en: "Replace this closing line with a final quote from the source."
     },
     quoteEmphasis: "",
-    credit: "Generated as an independent reading edition. Verify rights and source attribution before publishing."
+    credit: "Generated as a reading edition for close study."
   },
   chapters: [
     {
@@ -69,12 +68,12 @@ const article = {
           paragraphs: [
             {
               text: {
-                en: "This sample paragraph shows the expected data shape. Replace it with source text only when the user has permission to reproduce the source."
+                en: "This sample paragraph shows the expected data shape. Replace it with the source text, a summary, or a translated study note."
               }
             },
             {
               text: {
-                en: "For copyrighted material without reproduction rights, generate summaries, notes, and short excerpts instead of copying the full text."
+                en: "The reader builds search, navigation, highlights, notes, and bilingual display from this article data."
               }
             }
           ],

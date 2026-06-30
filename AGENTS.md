@@ -4,10 +4,10 @@ This repository contains an Agent Skill. Keep the skill useful for other agents,
 
 ## Principles
 
-1. Keep `skills/immersive-reading/SKILL.md` concise. Put detailed workflow, schema, copyright, design, and deployment information in `references/`.
+1. Keep `skills/immersive-reading/SKILL.md` concise. Put detailed workflow, schema, design, and deployment information in `references/`.
 2. Keep reusable code in `scripts/` and reusable output files in `assets/`.
 3. Do not add production analytics, Upstash, Redis, private domains, or project-specific credentials to the reader template.
-4. Do not include copyrighted source text in examples unless it is public domain, licensed, or written for this repository.
+4. Keep examples small and generic; do not embed private or project-specific source material.
 5. Validate after changes:
    - skill structure with `quick_validate.py`
    - article data with `scripts/validate-article-data.mjs`

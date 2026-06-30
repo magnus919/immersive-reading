@@ -61,7 +61,7 @@ function applyArticleChrome(){
   const scrollCue=$('.scroll-cue');if(scrollCue)scrollCue.innerHTML=`${esc(ARTICLE.hero?.scrollCue||'Scroll')}<span>↓</span>`;
   const doorCue=$('.door-intro-cue-text');if(doorCue)doorCue.textContent=ARTICLE.door?.cue||'Enter';
   const footerQuote=$('.foot .fq');if(footerQuote){const quote=textOf(ARTICLE.footer?.quote);const emphasis=ARTICLE.footer?.quoteEmphasis||'';footerQuote.innerHTML='“'+esc(emphasis?quote.replace(emphasis,''):quote)+(emphasis?` <b>${esc(emphasis)}</b>`:'')+'”';}
-  const credit=$('.foot .credit');if(credit)credit.innerHTML=`${esc(ARTICLE.source.copyright)} — <a href="${esc(ARTICLE.source.url)}" target="_blank" rel="noopener">${esc(ARTICLE.source.urlLabel)}</a>.<br>${esc(ARTICLE.footer?.credit||'')}`;
+  const credit=$('.foot .credit');if(credit){const srcLabel=ARTICLE.source?.label||'Source material';const srcUrl=ARTICLE.source?.url||'';const srcUrlLabel=ARTICLE.source?.urlLabel||srcUrl||'Original source';const srcLine=srcUrl?`${esc(srcLabel)} — <a href="${esc(srcUrl)}" target="_blank" rel="noopener">${esc(srcUrlLabel)}</a>.`:esc(srcLabel);credit.innerHTML=`${srcLine}<br>${esc(ARTICLE.footer?.credit||'')}`;}
   const sourceLink=$('.util-src');if(sourceLink)sourceLink.href=ARTICLE.source.url;
   const heroOriginal=$('.hero-original-link');if(heroOriginal)heroOriginal.addEventListener('click',()=>events.track('original_link_click',{surface:'hero'}));
   if(sourceLink)sourceLink.addEventListener('click',()=>events.track('original_link_click',{surface:'contents'}));

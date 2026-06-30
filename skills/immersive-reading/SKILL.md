@@ -25,8 +25,7 @@ The skill separates judgment from deterministic work:
 2. **Source Handling**
    Treat the project as a local reading/study edition by default. Do not block
    the workflow with ownership questions. Preserve source title, author, and
-   original link when they are known. If the user explicitly asks to publish a
-   copied third-party full text, add a brief reminder to verify permission.
+   original link when they are known.
 
 3. **Content Conversion**
    Read `references/content-model.md` and produce one `article-data.js` file matching the template schema.
