@@ -7,11 +7,15 @@ Install the Immersive Reading skill.
 
 Usage:
   sh setup codex
+  sh setup claude
+  sh setup agent
   sh setup local [skills-directory]
   sh setup path <skills-directory>
 
 Modes:
   codex   Install to ${CODEX_HOME:-$HOME/.codex}/skills.
+  claude  Install to ${CLAUDE_HOME:-$HOME/.claude}/skills.
+  agent   Install to ${AGENTS_HOME:-$HOME/.agents}/skills.
   local   Install to a project-local skills directory. Defaults to ./.agents/skills.
   path    Install to an explicit skills directory.
 
@@ -33,6 +37,12 @@ MODE="${1:-}"
 case "$MODE" in
   codex)
     TARGET_ROOT="${CODEX_HOME:-$HOME/.codex}/skills"
+    ;;
+  claude)
+    TARGET_ROOT="${CLAUDE_HOME:-$HOME/.claude}/skills"
+    ;;
+  agent)
+    TARGET_ROOT="${AGENTS_HOME:-$HOME/.agents}/skills"
     ;;
   local)
     TARGET_ROOT=$(absolute_path "${2:-.agents/skills}")
@@ -74,4 +84,4 @@ echo "Installed Immersive Reading skill to:"
 echo "  $TARGET"
 echo
 echo "Try this in a new agent session:"
-echo "  Use \$immersive-reading to convert this long article into a Reading Edition."
+echo "  Use \$immersive-reading to turn this long-form source into a Reading Edition."

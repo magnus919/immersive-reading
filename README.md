@@ -1,86 +1,104 @@
 # Immersive Reading
 
-Turn any serious long-form source into a beautiful, interactive Reading Edition.
+A Claude Code / Codex skill for turning long-form material into cinematic
+reading websites.
 
-Most learning material gets flattened into a summary. Immersive Reading does the
-opposite: it helps a coding agent preserve the shape of the original source,
-then wraps it in a polished reader with chapters, section transitions, quotes,
-search, highlights, notes, optional bilingual text, light/dark mode, and clear
-source attribution.
+Give your agent a dense essay, blog post, transcript, research note, or lecture
+script. Instead of getting a summary, you get a local Reading Edition: structured
+chapters, quiet cinematic transitions, searchable text, highlights, notes,
+optional bilingual reading, and a polished interface that feels worth sharing.
 
-This repository packages an Agent Skill plus a reusable static reader template.
-It is designed for OpenAI Codex, Claude Code-compatible skill clients, and other
-coding agents that understand the `SKILL.md` skill format.
+Immersive Reading is an Agent Skill plus a reusable static reader template. The
+skill teaches the agent how to reshape the source; the template gives the output
+its finished reading experience.
 
-## Why It Exists
+## The Promise
 
-A great reading edition should do three jobs:
+One source file in. One beautiful reading site out.
 
-1. Give the source a memorable structure without pretending the AI wrote it.
-2. Make the first successful build feel obvious, even for a new user.
-3. Keep copyright and attribution decisions explicit before any full-text copy.
+The generated edition is meant for material you actually want to spend time
+with: a long article you keep returning to, a class reading, a technical essay,
+an interview transcript, or your own notes after a research sprint.
 
-Immersive Reading packages those decisions into a repeatable workflow. Give the
-agent a source, rights context, language preference, and output folder; the skill
-guides it through content conversion, scaffolding, validation, preview, and
-optional deployment.
+The agent handles the editorial work:
 
-## See It Work
+- find the natural chapter structure
+- split each chapter into readable sections
+- write cinematic chapter and section openings
+- choose short anchor quotes
+- add bilingual text when requested
+- preserve source attribution when a source is provided
+- scaffold and validate the finished website
 
-Ask your agent:
+## Install
 
-```text
-Use $immersive-reading to convert ./article.md into a Reading Edition.
-I wrote the source material, so full-text reproduction is allowed.
-Add Chinese bilingual mode.
-Output it to ./my-reading-edition.
-```
-
-The agent should:
-
-- ask only for missing essentials
-- create chapters and sections when the source does not already have them
-- choose short anchor quotes for each section
-- generate a valid `article-data.js`
-- scaffold the reader template
-- run schema and browser smoke checks
-- preserve attribution and source-linking
-
-If reproduction rights are unclear, the skill should build an excerpt-and-study
-guide edition instead of mirroring the full source.
-
-## Quick Start
-
-Clone the repo, then install the skill into your preferred agent:
+Clone the repo:
 
 ```bash
 git clone https://github.com/ryannli/immersive-reading.git
 cd immersive-reading
+```
+
+Install for Claude Code:
+
+```bash
+sh setup claude
+```
+
+Install for Codex:
+
+```bash
 sh setup codex
 ```
 
-Start a new Codex thread and ask:
+Install for a generic `SKILL.md`-compatible agent:
+
+```bash
+sh setup agent
+```
+
+Or copy the skill folder yourself:
+
+```bash
+mkdir -p ~/.claude/skills ~/.codex/skills ~/.agents/skills
+cp -R skills/immersive-reading ~/.claude/skills/immersive-reading
+cp -R skills/immersive-reading ~/.codex/skills/immersive-reading
+cp -R skills/immersive-reading ~/.agents/skills/immersive-reading
+```
+
+The important part is that the installed folder contains:
 
 ```text
-Use $immersive-reading to turn this long article into an immersive reading edition.
+immersive-reading/
+  SKILL.md
+  agents/openai.yaml
+  assets/
+  references/
+  scripts/
 ```
 
-For a repo-local skill directory or another Agent Skills-compatible client:
+## First Run
 
-```bash
-sh setup local
+Open a new Claude Code or Codex session and ask:
+
+```text
+Use $immersive-reading to turn ./article.md into a Reading Edition at ./reading-edition.
+Add Chinese bilingual mode.
 ```
 
-This installs to `./.agents/skills/immersive-reading` in your current project.
-If your client uses a different skills directory, pass it explicitly:
+For an English-only edition:
 
-```bash
-sh setup path /path/to/your/skills-directory
+```text
+Use $immersive-reading to turn ./essay.md into a Reading Edition at ./essay-reader.
+No bilingual mode.
 ```
 
-## First Local Demo
+The agent should create the data file, scaffold the site, run validation, and
+give you a local preview command.
 
-You can generate a sample reader without providing new content:
+## Local Demo
+
+Generate the bundled sample reader:
 
 ```bash
 node skills/immersive-reading/scripts/scaffold-reader.mjs \
@@ -89,7 +107,7 @@ node skills/immersive-reading/scripts/scaffold-reader.mjs \
   --force
 ```
 
-Then preview it:
+Preview it:
 
 ```bash
 cd /tmp/immersive-reading-demo
@@ -98,23 +116,23 @@ python3 -m http.server 8791
 
 Open `http://127.0.0.1:8791`.
 
-## What You Get
+## What It Builds
 
-- A finished static reader, not just generated copy
+- Static website that can run locally or deploy to Vercel
 - Chapter and section-based reading flow
+- Cinematic chapter openings and scroll transitions
 - Search
 - Highlights
 - Notes and copyable notes
 - Optional bilingual line-by-line reading mode
 - Light and dark mode
 - Mobile notice for limited annotation functionality
-- Source attribution and original-link affordances
-- 3D particle background and scroll-driven transitions
-- Validation scripts for generated article data and the reader template
+- Source title, author, and original-link fields when available
+- 3D particle background
+- Validation scripts for generated article data and template smoke tests
 
-The bundled template intentionally excludes production analytics, dashboards,
-Upstash/Redis, private domains, project-specific secrets, and Paul
-Graham-specific content.
+The template deliberately leaves out production analytics, dashboards,
+Upstash/Redis, private domains, and project-specific secrets.
 
 ## Repository Layout
 
@@ -129,21 +147,7 @@ skills/
     scripts/
 ```
 
-## Content Rights
-
-The skill asks whether the user has rights to reproduce the full source text.
-If rights are unclear, it should generate a summary, excerpt, or study-guide
-edition instead of copying the full work.
-
-Always verify attribution before publishing.
-
 ## Development
-
-Validate the skill:
-
-```bash
-python3 /path/to/skill-creator/scripts/quick_validate.py skills/immersive-reading
-```
 
 Validate sample article data:
 
@@ -170,5 +174,4 @@ node skills/immersive-reading/scripts/scaffold-reader.mjs \
 
 ## License
 
-MIT. Generated source editions remain subject to the rights of their original
-source material.
+MIT.

@@ -11,7 +11,7 @@ Create a self-contained static reading site from new source material by reusing 
 
 The skill separates judgment from deterministic work:
 
-- Use the model for rights review, structure, chapter/section titles, quotes, summaries, translation, and editorial judgment.
+- Use the model for source structure, chapter/section titles, quotes, summaries, translation, and editorial judgment.
 - Use bundled scripts for scaffolding, schema validation, and smoke tests.
 
 ## Workflow
@@ -19,20 +19,21 @@ The skill separates judgment from deterministic work:
 1. **Intake**
    Ask only for missing essentials:
    - source content or source URL/file
-   - whether the user has rights to reproduce the full text
    - whether to include bilingual mode and target language
    - desired output folder and deployment target, if any
 
-2. **Rights Gate**
-   Before copying full text, read `references/copyright-and-attribution.md`.
-   If reproduction rights are unclear, create an excerpt-and-study-guide edition instead of a full-text mirror.
+2. **Source Handling**
+   Treat the project as a local reading/study edition by default. Do not block
+   the workflow with ownership questions. Preserve source title, author, and
+   original link when they are known. If the user explicitly asks to publish a
+   copied third-party full text, add a brief reminder to verify permission.
 
 3. **Content Conversion**
    Read `references/content-model.md` and produce one `article-data.js` file matching the template schema.
    If the source lacks structure, create 5-14 chapters and 1-4 sections per chapter. Each section needs:
    - `take`: clear section title
    - `quote`: short anchor quote or excerpt
-   - `paragraphs`: source text, summary text, or translated/source-aligned text depending on rights
+   - `paragraphs`: source text, summary text, or translated/source-aligned text
    - optional `footnotes`
 
 4. **Scaffold**
