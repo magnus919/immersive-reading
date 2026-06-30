@@ -6,24 +6,10 @@ reading websites.
 Example: Paul Graham's epic essay,
 [How to Do Great Work](https://paulgraham.com/greatwork.html).
 
-<table>
-  <tr>
-    <td width="50%">
-      <strong>Before</strong><br>
-      <a href="docs/media/how-to-do-great-work-before.mp4">
-        <img src="docs/media/how-to-do-great-work-before.gif" alt="Before: plain essay page" width="100%">
-      </a><br>
-      <sub>Plain essay page. Click to open the full video.</sub>
-    </td>
-    <td width="50%">
-      <strong>After</strong><br>
-      <a href="docs/media/how-to-do-great-work-after.mp4">
-        <img src="docs/media/how-to-do-great-work-after.gif" alt="After: cinematic Reading Edition" width="100%">
-      </a><br>
-      <sub>Cinematic Reading Edition. Click to open the full video.</sub>
-    </td>
-  </tr>
-</table>
+| Before | After |
+| --- | --- |
+| [![Before: plain essay page](docs/media/how-to-do-great-work-before.gif)](docs/media/how-to-do-great-work-before.mp4) | [![After: cinematic Reading Edition](docs/media/how-to-do-great-work-after.gif)](docs/media/how-to-do-great-work-after.mp4) |
+| [Open full video](docs/media/how-to-do-great-work-before.mp4) | [Open full video](docs/media/how-to-do-great-work-after.mp4) |
 
 ## What It Builds
 
@@ -38,10 +24,12 @@ One source file becomes a local Reading Edition with:
 
 ## Quick Start
 
-### Claude Code
+<details open>
+<summary><strong>Claude Code (recommended)</strong></summary>
 
-Install from the public repo as a Claude Code plugin. Run these as two separate
-Claude Code messages:
+Install from the public repo as a Claude Code plugin.
+
+Run these as two separate Claude Code messages:
 
 ```text
 /plugin marketplace add ryannli/immersive-reading
@@ -59,7 +47,10 @@ Use it in Claude Code with:
 /immersive-reading:immersive-reading
 ```
 
-### Codex
+</details>
+
+<details>
+<summary><strong>Codex</strong></summary>
 
 Codex uses this repo as a skill, not a plugin. Install it with:
 
@@ -73,24 +64,10 @@ Or use the npx installer:
 npx --yes github:ryannli/immersive-reading install codex
 ```
 
-### Local Agents
+</details>
 
-The `npx` commands run a small installer that copies `skills/immersive-reading`
-into the target skills folder. They do not install app dependencies.
-
-For Claude Code without the plugin flow:
-
-```bash
-npx --yes github:ryannli/immersive-reading install claude
-```
-
-For a generic `SKILL.md`-compatible agent:
-
-```bash
-npx --yes github:ryannli/immersive-reading install agent
-```
-
-### Cursor
+<details>
+<summary><strong>Cursor</strong></summary>
 
 Install the skill resources and a project rule into the current project:
 
@@ -98,19 +75,56 @@ Install the skill resources and a project rule into the current project:
 npx --yes github:ryannli/immersive-reading install cursor .
 ```
 
-### Antigravity CLI
+</details>
+
+<details>
+<summary><strong>Antigravity CLI</strong></summary>
 
 ```bash
 agy plugin install https://github.com/ryannli/immersive-reading.git
 ```
 
-### Local Clone
+</details>
+
+<details>
+<summary><strong>Claude Code without plugins</strong></summary>
+
+```bash
+npx --yes github:ryannli/immersive-reading install claude
+```
+
+</details>
+
+<details>
+<summary><strong>Other SKILL.md-compatible agents</strong></summary>
+
+The `npx` commands run a small installer that copies `skills/immersive-reading`
+into the target skills folder. They do not install app dependencies.
+
+For a generic agent skills folder:
+
+```bash
+npx --yes github:ryannli/immersive-reading install agent
+```
+
+For a local clone:
 
 ```bash
 git clone https://github.com/ryannli/immersive-reading.git
 cd immersive-reading
 sh setup codex
 ```
+
+</details>
+
+<details>
+<summary><strong>Why is there a bin folder?</strong></summary>
+
+`bin/immersive-reading.mjs` is the tiny installer used by the `npx` commands
+above. It copies the bundled skill into Claude, Codex, Cursor, or a generic
+agent skills directory. It is not part of generated reading websites.
+
+</details>
 
 ## First Prompt
 
