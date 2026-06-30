@@ -1,4 +1,0 @@
-interface:
-  display_name: "Immersive Learning"
-  short_description: "Build interactive reading editions"
-  default_prompt: "Use $immersive-learning to convert this long article into an immersive reading edition."

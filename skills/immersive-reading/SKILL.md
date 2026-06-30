@@ -1,9 +1,9 @@
 ---
-name: immersive-learning
+name: immersive-reading
 description: Build immersive interactive reading editions from long-form learning material. Use when the user wants to convert a blog post, essay, transcript, note, paper, or other long content into a polished static reader with chapters, sections, quotes, search, highlights, notes, optional bilingual text, light/dark mode, and source attribution.
 ---
 
-# Immersive Learning
+# Immersive Reading
 
 ## Overview
 
@@ -39,15 +39,15 @@ The skill separates judgment from deterministic work:
    Run:
 
    ```bash
-   node skills/immersive-learning/scripts/scaffold-reader.mjs --article-data /path/to/article-data.js --out /path/to/output
+   node skills/immersive-reading/scripts/scaffold-reader.mjs --article-data /path/to/article-data.js --out /path/to/output
    ```
 
 5. **Validate**
    Run:
 
    ```bash
-   node skills/immersive-learning/scripts/validate-article-data.mjs /path/to/output/src/articles/<article-id>/data.js
-   node skills/immersive-learning/scripts/smoke-test-reader.mjs /path/to/output
+   node skills/immersive-reading/scripts/validate-article-data.mjs /path/to/output/src/articles/<article-id>/data.js
+   node skills/immersive-reading/scripts/smoke-test-reader.mjs /path/to/output
    ```
 
 6. **Preview**

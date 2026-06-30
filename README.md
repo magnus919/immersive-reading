@@ -1,4 +1,4 @@
-# Immersive Learning Skill
+# Immersive Reading Skill
 
 Turn long-form learning material into a polished interactive reading edition.
 
@@ -24,7 +24,7 @@ The bundled template intentionally excludes production analytics, dashboards, Up
 
 ```text
 skills/
-  immersive-learning/
+  immersive-reading/
     SKILL.md
     agents/openai.yaml
     assets/reader-template/
@@ -38,13 +38,13 @@ Copy or symlink the skill folder into your Codex skills directory:
 
 ```bash
 mkdir -p ~/.codex/skills
-cp -R skills/immersive-learning ~/.codex/skills/immersive-learning
+cp -R skills/immersive-reading ~/.codex/skills/immersive-reading
 ```
 
 Then start a new Codex thread and ask:
 
 ```text
-Use $immersive-learning to convert this article into an immersive reading edition.
+Use $immersive-reading to convert this article into an immersive reading edition.
 ```
 
 ## Install For Claude Code And Other Agent Skills Clients
@@ -54,22 +54,22 @@ This repository uses the standard Agent Skills folder shape: a skill directory c
 For Claude Code or another skills-compatible coding agent, install or point the client at:
 
 ```text
-skills/immersive-learning
+skills/immersive-reading
 ```
 
-If your client has a configured skills directory, copy `skills/immersive-learning` there. If it supports repo-local skills, open this repository and invoke `$immersive-learning`.
+If your client has a configured skills directory, copy `skills/immersive-reading` there. If it supports repo-local skills, open this repository and invoke `$immersive-reading`.
 
 ## Example Use
 
 ```text
-Use $immersive-learning to build a reading edition from this Markdown file.
+Use $immersive-reading to build a reading edition from this Markdown file.
 I wrote the source material, so full-text reproduction is allowed.
 Do not add bilingual mode.
 Output it to ./my-reading-edition.
 ```
 
 ```text
-Use $immersive-learning to convert this blog post into a study-guide edition.
+Use $immersive-reading to convert this blog post into a study-guide edition.
 I do not own the copyright, so use summaries and short excerpts only.
 Add English + Chinese bilingual study mode.
 ```
@@ -85,28 +85,28 @@ Always verify attribution before publishing.
 Validate the skill:
 
 ```bash
-python3 /path/to/skill-creator/scripts/quick_validate.py skills/immersive-learning
+python3 /path/to/skill-creator/scripts/quick_validate.py skills/immersive-reading
 ```
 
 Validate sample article data:
 
 ```bash
-node skills/immersive-learning/scripts/validate-article-data.mjs \
-  skills/immersive-learning/assets/reader-template/src/articles/sample-reading/data.js
+node skills/immersive-reading/scripts/validate-article-data.mjs \
+  skills/immersive-reading/assets/reader-template/src/articles/sample-reading/data.js
 ```
 
 Smoke test the template:
 
 ```bash
-node skills/immersive-learning/scripts/smoke-test-reader.mjs \
-  skills/immersive-learning/assets/reader-template
+node skills/immersive-reading/scripts/smoke-test-reader.mjs \
+  skills/immersive-reading/assets/reader-template
 ```
 
 Scaffold a reader:
 
 ```bash
-node skills/immersive-learning/scripts/scaffold-reader.mjs \
-  --article-data skills/immersive-learning/assets/reader-template/src/articles/sample-reading/data.js \
+node skills/immersive-reading/scripts/scaffold-reader.mjs \
+  --article-data skills/immersive-reading/assets/reader-template/src/articles/sample-reading/data.js \
   --out /tmp/sample-reading-edition \
   --force
 ```
