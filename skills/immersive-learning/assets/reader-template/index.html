@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Immersive Reading Edition</title>
+<meta name="description" content="An independent reading edition for close study, notes, and source attribution.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Immersive Reading Edition">
+<meta property="og:description" content="An independent reading edition for close study, notes, and source attribution.">
+<meta property="og:site_name" content="Immersive Learning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Immersive Reading Edition">
+<meta name="twitter:description" content="An independent reading edition for close study, notes, and source attribution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Schibsted+Grotesk:wght@400;500;600;700&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles.css?v=43">
+</head>
+<body class="light">
+<canvas id="gl"></canvas>
+<div id="scrim"></div>
+<div id="veil"></div>
+<div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg></div>
+<div id="topfade"></div>
+<div class="tprog" id="tprog"></div>
+
+<header class="topbar">
+  <button class="brand" onclick="toTop()">Reader</button>
+  <div class="right">
+    <span class="now" id="now">The Beginning</span>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light / dark" aria-label="Toggle light / dark">☾</button>
+    <button class="lang-btn" onclick="toggleLangMenu(event)"><span class="gl-i">文</span><span class="lab-txt" id="langLab">EN</span><span class="cv">▾</span></button>
+    <button class="tbtn" onclick="toggleSearch()" title="Search" aria-label="Search"><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span class="lab">Search</span></button>
+    <button class="tbtn" onclick="toggleHighlights()" title="Highlights" aria-label="Highlights"><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 4.5l3 3L8 19l-4 1 1-4 11.5-11.5z"/><path d="M14.5 6.5l3 3"/></svg><span class="lab">Highlights</span></button>
+    <button class="tbtn" onclick="toggleContents()" title="Contents" aria-label="Contents"><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="lab">Contents</span></button>
+  </div>
+</header>
+<div id="langMenu"></div>
+
+<div id="spine-scrim"></div>
+<nav class="spine" id="spine"></nav>
+
+<main id="main">
+  <section class="door-intro" id="doorIntro" aria-label="Reading entrance">
+    <div class="door-intro-scene">
+      <video class="door-intro-video" id="doorIntroVideo" muted playsinline preload="auto" aria-hidden="true"></video>
+      <div class="door-intro-grade"></div>
+      <div class="door-intro-wash"></div>
+      <div class="door-intro-label">
+        <div>Source material <span></span></div>
+        <div class="door-intro-purpose"></div>
+      </div>
+      <section class="hero" id="hero">
+        <h1 id="heroTitle" aria-label=""></h1>
+        <p class="hero-author"></p>
+        <p class="hero-note"></p>
+        <div class="hero-actions">
+          <button class="hero-start" id="heroPrimary" type="button">Start reading</button>
+        </div>
+        <div class="scroll-cue">Scroll<span>↓</span></div>
+      </section>
+      <div class="door-intro-cue"><span class="door-intro-cue-text">Enter</span><span class="door-intro-cue-arrow">↓</span></div>
+    </div>
+  </section>
+  <div id="chapters"></div>
+  <footer class="foot">
+    <div class="fq"></div>
+    <div class="credit"></div>
+    <button class="totop" onclick="toTop()">Return to the top ↑</button>
+  </footer>
+</main>
+
+<div id="contents" class="ov-screen" data-lenis-prevent>
+  <button class="ov-close" onclick="toggleContents()">Close ✕</button>
+  <div class="co-inner">
+    <div class="co-top"><h3>Contents</h3>
+      <a class="util-src" href="#" target="_blank" rel="noopener">Original ↗</a></div>
+    <div id="coList"></div>
+  </div>
+</div>
+
+<div id="search" class="ov-screen" data-lenis-prevent>
+  <button class="ov-close" onclick="toggleSearch()">Close ✕</button>
+  <div class="se-inner">
+    <div class="se-field"><span class="mg">⌕</span><input id="seInput" type="text" placeholder="Search the whole essay…" autocomplete="off" spellcheck="false"></div>
+    <div class="se-hint"><span></span></div>
+    <div class="se-results" id="seResults"></div>
+  </div>
+</div>
+
+<div id="highlights" class="ov-screen" data-lenis-prevent>
+  <button class="ov-close" onclick="toggleHighlights()">Close ✕</button>
+  <div class="hl-inner">
+    <h3 class="hl-title">Highlights</h3>
+    <p class="hl-sub">The author's key lines, plus anything you mark yourself. Select any passage in the essay to add your own — remove any line you don't want.</p>
+    <div id="hlBody"></div>
+  </div>
+</div>
+
+<div id="mobileNotice" class="mobile-notice" role="dialog" aria-modal="true" aria-labelledby="mobileNoticeTitle" aria-describedby="mobileNoticeText" data-lenis-prevent>
+  <div class="mobile-notice-card">
+    <div class="mobile-notice-k">Limited functionality</div>
+    <h3 id="mobileNoticeTitle">Best experienced on a computer</h3>
+    <p id="mobileNoticeText">Reading works on mobile. For highlighting and notes, open the desktop version for the full experience.</p>
+    <button id="mobileNoticeClose" type="button">Continue reading</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script type="module" src="src/app.js?v=12"></script>
+</body>
+</html>
