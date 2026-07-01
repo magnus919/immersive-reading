@@ -1,17 +1,13 @@
 {
   "name": "immersive-reading",
   "version": "0.1.0",
-  "description": "Build interactive Reading Editions from long-form source material.",
+  "description": "Build interactive reading spaces from long-form source material.",
   "license": "MIT",
   "engines": {
     "node": ">=18"
   },
-  "bin": {
-    "immersive-reading": "./bin/immersive-reading.mjs"
-  },
   "files": [
     ".claude-plugin",
-    "bin",
     "plugin.json",
     "setup",
     "skills"
