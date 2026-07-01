@@ -1,6 +1,8 @@
 ---
 name: immersive-reading
-description: Turn long-form source material into bespoke interactive learning spaces. Use when the user wants to convert a blog post, essay, transcript, note, paper, or other long content into a polished static reader with chapters, sections, quotes, search, highlights, notes, optional bilingual support, light/dark mode, and source attribution.
+description: "Use when converting a blog post, essay, transcript, or paper into an interactive reading space with chapters, search, highlights, and notes."
+license: MIT
+compatibility: Any agent with Node.js >=18 — scripts are self-contained .mjs files
 ---
 
 # Immersive Reading
@@ -14,7 +16,18 @@ The skill separates judgment from deterministic work:
 - Use the model for source structure, chapter/section titles, quotes, summaries, translation, and editorial judgment.
 - Use bundled scripts for scaffolding, schema validation, and smoke tests.
 
+## Reference Files
+
+| Reference | Load when | File |
+|-----------|-----------|------|
+| Content model | You need the article-data.js schema (required for every reader) | `references/content-model.md` |
+| Conversion workflow | Source has weak or missing structure | `references/conversion-workflow.md` |
+| Design contract | Changing template UI or animations | `references/design-contract.md` |
+| Deployment | User asks to publish the reader | `references/deployment.md` |
+
 ## Workflow
+
+> Run all commands from the repository root. The scripts resolve their own location relative to the skill directory, but the commands in this workflow assume the repo root as the working directory.
 
 1. **Intake**
    Ask only for missing essentials:
@@ -39,7 +52,7 @@ The skill separates judgment from deterministic work:
 
 3. **Content Conversion**
    Read `references/content-model.md` and produce one `article-data.js` file matching the template schema.
-   If the source lacks structure, create 5-14 chapters and 1-4 sections per chapter. Each section needs:
+   If the source lacks structure, read `references/conversion-workflow.md` for chapter/section structure heuristics (5-14 chapters, 1-4 sections per chapter). Each section needs:
    - `take`: clear section title
    - `quote`: short anchor quote or excerpt
    - `paragraphs`: source text, summary text, or translated/source-aligned text
@@ -93,3 +106,21 @@ Preserve these features unless the user asks otherwise:
 - 3D particle background and scroll-driven transitions
 
 Read `references/design-contract.md` before changing template layout, animation, or visual hierarchy.
+
+## Installation
+
+This skill lives under `skills/immersive-reading/` in the repo. Install it via:
+
+```bash
+# Clone the whole repo
+git clone https://github.com/magnus919/immersive-reading.git
+
+# Symlink the skill into your Hermes skills directory
+ln -s $(pwd)/immersive-reading/skills/immersive-reading ~/.hermes/skills/immersive-reading
+```
+
+Or for Skills CLI-compatible agents:
+
+```bash
+npx skills add magnus919/immersive-reading
+```
