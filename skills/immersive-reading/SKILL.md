@@ -47,11 +47,17 @@ The skill separates judgment from deterministic work:
    ```
 
 5. **Validate**
-   Run:
+   Run the generated-site checks:
 
    ```bash
    node skills/immersive-reading/scripts/validate-article-data.mjs /path/to/output/src/articles/<article-id>/data.js
    node skills/immersive-reading/scripts/smoke-test-reader.mjs /path/to/output
+   ```
+
+   If you changed this skill's template, references, or scripts, also run:
+
+   ```bash
+   node skills/immersive-reading/scripts/check-skill.mjs
    ```
 
 6. **Preview**

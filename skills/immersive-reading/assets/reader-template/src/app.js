@@ -271,7 +271,7 @@ function onScroll(){
     document.body.style.setProperty('--intro-spine',spine.toFixed(3));
     document.body.classList.toggle('door-video-active',spine<.98);
   }
-  // Cinematic chapter timeline: the sticky pin stays fixed; scroll only scrubs --cmp/--ex/--em.
+  // Chapter timeline: the sticky pin stays fixed; scroll only scrubs --cmp/--ex/--em.
   for(const m of movementEls){
     const tr=m.getBoundingClientRect();
     const span=Math.max(1,tr.height-vh);

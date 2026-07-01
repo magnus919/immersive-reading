@@ -17,11 +17,12 @@
       "category": "productivity",
       "tags": [
         "reading",
-        "skills",
+        "agents",
+        "claude-code",
+        "codex",
         "long-form",
         "study",
-        "bilingual",
-        "static-site"
+        "learning"
       ]
     }
   ]

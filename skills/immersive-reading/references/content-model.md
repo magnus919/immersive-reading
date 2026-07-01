@@ -88,7 +88,7 @@ When the user requests bilingual mode, add a language entry and add the same lan
 ```js
 languages: [
   { code: "en", shortLabel: "EN", label: "English", menuTitle: "English", menuDescription: "Original text only", primary: true },
-  { code: "zh", shortLabel: "中", label: "中文", menuTitle: "English + 中文", menuDescription: "Line-by-line study mode" }
+  { code: "es", shortLabel: "ES", label: "Spanish", menuTitle: "English + Spanish", menuDescription: "Line-by-line study mode" }
 ]
 ```
 
@@ -99,7 +99,7 @@ paragraphs: [
   {
     text: {
       en: "Original paragraph.",
-      zh: "译文段落。"
+      es: "Parrafo traducido."
     }
   }
 ]

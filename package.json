@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Turn long-form material into bespoke learning spaces.",
   "license": "MIT",
+  "scripts": {
+    "check": "node skills/immersive-reading/scripts/check-skill.mjs"
+  },
   "engines": {
     "node": ">=18"
   },
