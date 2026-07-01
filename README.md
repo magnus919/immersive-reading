@@ -91,7 +91,7 @@ Example: Paul Graham's epic essay,
 <details open>
 <summary><strong>Claude Code</strong></summary>
 
-Install from the public repo as a Claude Code plugin.
+Option A: install as a Claude Code plugin.
 
 Run these as two separate Claude Code messages:
 
@@ -111,6 +111,14 @@ Use it in Claude Code with:
 /immersive-reading:immersive-reading
 ```
 
+Option B: install as an open agent skill.
+
+```bash
+npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a claude-code -y
+```
+
+Then start a new Claude Code session and ask for `immersive-reading`.
+
 </details>
 
 <details>
@@ -119,7 +127,7 @@ Use it in Claude Code with:
 Install the skill into your local Codex skills folder:
 
 ```bash
-npx --yes github:ryannli/immersive-reading install codex
+npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a codex -y
 ```
 
 Then start a new Codex session and use:
@@ -134,10 +142,10 @@ https://paulgraham.com/greatwork.html
 <details>
 <summary><strong>Cursor</strong></summary>
 
-Install the skill resources and a project rule into the current project:
+Install the skill into Cursor:
 
 ```bash
-npx --yes github:ryannli/immersive-reading install cursor .
+npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a cursor -y
 ```
 
 </details>
@@ -154,13 +162,14 @@ agy plugin install https://github.com/ryannli/immersive-reading.git
 <details>
 <summary><strong>Other SKILL.md-compatible agents</strong></summary>
 
-The `npx` commands run a small installer that copies `skills/immersive-reading`
-into the target skills folder. They do not install app dependencies.
+The Skills CLI can install this repo into supported coding agents. It fetches
+the `skills/immersive-reading` folder directly from GitHub; this repo does not
+need to be published as an npm package.
 
-For a generic agent skills folder:
+Replace `codex` with your agent name:
 
 ```bash
-npx --yes github:ryannli/immersive-reading install agent
+npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a codex -y
 ```
 
 For a local clone:
@@ -168,7 +177,7 @@ For a local clone:
 ```bash
 git clone https://github.com/ryannli/immersive-reading.git
 cd immersive-reading
-sh setup codex
+sh setup agent
 ```
 
 </details>
