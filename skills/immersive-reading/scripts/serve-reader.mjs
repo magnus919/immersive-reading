@@ -32,11 +32,7 @@ const server = http.createServer((request, response) => {
       return;
     }
 
-    response.writeHead(200, {
-      "Content-Type": contentType(filePath),
-      "Cache-Control": "no-store"
-    });
-    fs.createReadStream(filePath).pipe(response);
+    serveFile(request, response, filePath, stat);
   });
 });
 
@@ -77,6 +73,65 @@ function contentType(filePath) {
     ".webm": "video/webm",
     ".webp": "image/webp"
   }[ext] || "application/octet-stream";
+}
+
+function serveFile(request, response, filePath, stat) {
+  const type = contentType(filePath);
+  const range = request.headers.range;
+
+  if (!range) {
+    response.writeHead(200, {
+      "Content-Type": type,
+      "Accept-Ranges": "bytes",
+      "Content-Length": stat.size,
+      "Cache-Control": "no-store"
+    });
+    fs.createReadStream(filePath).pipe(response);
+    return;
+  }
+
+  const parsed = parseRange(range, stat.size);
+  if (!parsed) {
+    response.writeHead(416, {
+      "Content-Range": `bytes */${stat.size}`,
+      "Accept-Ranges": "bytes",
+      "Cache-Control": "no-store"
+    });
+    response.end();
+    return;
+  }
+
+  response.writeHead(206, {
+    "Content-Type": type,
+    "Accept-Ranges": "bytes",
+    "Content-Range": `bytes ${parsed.start}-${parsed.end}/${stat.size}`,
+    "Content-Length": parsed.end - parsed.start + 1,
+    "Cache-Control": "no-store"
+  });
+  fs.createReadStream(filePath, parsed).pipe(response);
+}
+
+function parseRange(header, size) {
+  const match = /^bytes=(\d*)-(\d*)$/.exec(header);
+  if (!match || size < 1) return null;
+
+  let start;
+  let end;
+  if (match[1] === "" && match[2] === "") return null;
+
+  if (match[1] === "") {
+    const suffixLength = Number(match[2]);
+    if (!Number.isSafeInteger(suffixLength) || suffixLength < 1) return null;
+    start = Math.max(size - suffixLength, 0);
+    end = size - 1;
+  } else {
+    start = Number(match[1]);
+    end = match[2] === "" ? size - 1 : Number(match[2]);
+  }
+
+  if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end)) return null;
+  if (start < 0 || end < start || start >= size) return null;
+  return { start, end: Math.min(end, size - 1) };
 }
 
 function parseArgs(values) {

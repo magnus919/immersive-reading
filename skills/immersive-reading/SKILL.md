@@ -67,7 +67,7 @@ The skill separates judgment from deterministic work:
    ```
 
 6. **Preview**
-   Serve the generated folder with the bundled local server, inspect desktop and mobile, and fix data/layout problems before delivery:
+   Serve the generated folder with the bundled local server, inspect desktop and mobile, and fix data/layout problems before delivery. Use this server for preview because it supports byte-range video seeking required by the scroll-scrub opening:
 
    ```bash
    node skills/immersive-reading/scripts/serve-reader.mjs /path/to/output --port 8791
