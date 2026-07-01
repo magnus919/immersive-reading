@@ -116,16 +116,17 @@ Use it in Claude Code with:
 <details>
 <summary><strong>Codex</strong></summary>
 
-Codex uses this repo as a skill, not a plugin.
-
-```text
-$skill-installer https://github.com/ryannli/immersive-reading/tree/main/skills/immersive-reading
-```
-
-Or use the npx installer:
+Install the skill into your local Codex skills folder:
 
 ```bash
 npx --yes github:ryannli/immersive-reading install codex
+```
+
+Then start a new Codex session and use:
+
+```text
+Use $immersive-reading on this article:
+https://paulgraham.com/greatwork.html
 ```
 
 </details>
