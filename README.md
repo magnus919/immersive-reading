@@ -18,7 +18,7 @@ bilingual support.
 
 <br>
 
-## Not A Summary. A Reading Space.
+## Not A Summary. A Co-Reading Space.
 
 Example: Paul Graham's epic essay,
 [How to Do Great Work](https://paulgraham.com/greatwork.html).
