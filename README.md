@@ -185,7 +185,7 @@ https://paulgraham.com/greatwork.html
 For bilingual reading:
 
 ```text
-Use $immersive-reading on this link and add Chinese bilingual mode:
+Use $immersive-reading on this link and add Spanish bilingual mode:
 https://paulgraham.com/greatwork.html
 ```
 
