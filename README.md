@@ -2,11 +2,11 @@
 
 # Immersive Reading
 
-<strong>A reusable skill for turning long-form material into immersive Reading Editions.</strong>
+<strong>Turn dense long-form ideas into reading experiences people want to enter.</strong>
 
-Bring an essay, post, transcript, note, or paper. Get back a polished static
-reading site with chapters, transitions, search, highlights, notes, and optional
-bilingual reading.
+Drop in a link, essay, transcript, note, or paper. Get back a study-ready
+Reading Edition with chapters, source attribution, search, highlights, notes,
+and optional bilingual text.
 
 <br>
 
