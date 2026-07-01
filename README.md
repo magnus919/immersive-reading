@@ -126,13 +126,20 @@ Use it in Claude Code with:
 /immersive-reading:immersive-reading
 ```
 
-Option B: install as an open agent skill.
+Or install it as an open agent skill:
 
 ```bash
-npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a claude-code -y
+npx skills add ryannli/immersive-reading
 ```
 
-Then start a new Claude Code session and ask for `immersive-reading`.
+Choose Claude Code if the installer asks. Then start a new Claude Code session
+and ask for `immersive-reading`.
+
+No-prompt install:
+
+```bash
+npx skills add ryannli/immersive-reading -g -a claude-code -y
+```
 
 </details>
 
@@ -142,10 +149,10 @@ Then start a new Claude Code session and ask for `immersive-reading`.
 Install the skill into your local Codex skills folder:
 
 ```bash
-npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a codex -y
+npx skills add ryannli/immersive-reading
 ```
 
-Then start a new Codex session and use:
+Choose Codex if the installer asks. Then start a new Codex session and use:
 
 ```text
 Use $immersive-reading on this article:
@@ -160,8 +167,10 @@ https://paulgraham.com/greatwork.html
 Install the skill into Cursor:
 
 ```bash
-npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a cursor -y
+npx skills add ryannli/immersive-reading
 ```
+
+Choose Cursor if the installer asks.
 
 </details>
 
@@ -184,7 +193,7 @@ need to be published as an npm package.
 Replace `codex` with your agent name:
 
 ```bash
-npx --yes skills@latest add ryannli/immersive-reading --skill immersive-reading -g -a codex -y
+npx skills add ryannli/immersive-reading -g -a codex -y
 ```
 
 For a local clone:
