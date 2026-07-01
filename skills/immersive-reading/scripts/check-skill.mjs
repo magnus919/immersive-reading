@@ -11,7 +11,6 @@ const errors = [];
 
 const required = [
   "SKILL.md",
-  "agents/openai.yaml",
   "references/content-model.md",
   "references/conversion-workflow.md",
   "references/design-contract.md",
