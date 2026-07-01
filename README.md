@@ -68,21 +68,15 @@ bilingual support.
 
 This is a standard [Agent Skills](https://agentskills.io) skill. Install it with any SKILL.md-compatible agent:
 
-### Via git clone (Hermes Agent, any agent with a SKILL.md loader)
+### Via git clone
 
 ```bash
 git clone https://github.com/magnus919/immersive-reading.git
 ```
 
-Then symlink the skill or reference it directly:
+The skill lives at `skills/immersive-reading/` in the clone. Load it using your agent's standard skill-loading mechanism.
 
-```bash
-ln -s $(pwd)/immersive-reading/skills/immersive-reading ~/.hermes/skills/immersive-reading
-```
-
-Load it in-session with `skill_view(name="immersive-reading")` or trigger it by mentioning the source content you want to convert.
-
-### Via Skills CLI (Claude Code, Codex, Cursor, OpenCode, etc.)
+### Via Skills CLI
 
 ```bash
 npx skills add magnus919/immersive-reading
