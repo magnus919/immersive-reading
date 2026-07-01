@@ -2,11 +2,11 @@
 
 # Immersive Reading
 
-<strong>Turn dense long-form ideas into reading experiences people want to enter.</strong>
+<strong>Turn dense long-form ideas into interactive reading spaces people want to enter.</strong>
 
-Drop in a link, essay, transcript, note, or paper. Get back a study-ready
-Reading Edition with chapters, source attribution, search, highlights, notes,
-and optional bilingual text.
+Drop in a link, essay, transcript, note, or paper. Get back a polished learning
+space with chapters, source attribution, search, highlights, notes, and optional
+bilingual support.
 
 <br>
 
@@ -18,15 +18,15 @@ and optional bilingual text.
 
 <br>
 
-## A Reading Edition, Not A Summary
+## Not A Summary. A Reading Space.
 
 Example: Paul Graham's epic essay,
 [How to Do Great Work](https://paulgraham.com/greatwork.html).
 
 | Before | After |
 | --- | --- |
-| [![Before: plain essay page](docs/media/how-to-do-great-work-before.gif)](https://paulgraham.com/greatwork.html) | [![After: immersive Reading Edition](docs/media/how-to-do-great-work-after.gif)](https://x.com/ranli_thinker/status/2071738620860682365) |
-| [Open original essay](https://paulgraham.com/greatwork.html) | [Open X post to watch the video](https://x.com/ranli_thinker/status/2071738620860682365) |
+| [![Before: plain essay page](docs/media/how-to-do-great-work-before.gif)](https://paulgraham.com/greatwork.html) | [![After: immersive reading space](docs/media/how-to-do-great-work-after.gif)](https://x.com/ranli_thinker/status/2071738620860682365) |
+| [Open original essay](https://paulgraham.com/greatwork.html) | [Open live reading space](http://ranli.me/read-paul-graham) · [Watch the X post](https://x.com/ranli_thinker/status/2071738620860682365) |
 
 <br>
 
@@ -34,29 +34,35 @@ Example: Paul Graham's epic essay,
 
 <table>
   <tr>
-    <td width="33%" valign="top">
-      <strong>Chaptered reading flow</strong><br>
+    <td width="33%" valign="top" align="center">
+      <sup>READING FLOW</sup><br><br>
+      <strong>Chaptered, paced, memorable</strong><br>
       <sub>Chapter openings, section beats, anchor quotes, and scroll-driven transitions.</sub>
     </td>
-    <td width="33%" valign="top">
-      <strong>Study tools</strong><br>
+    <td width="33%" valign="top" align="center">
+      <sup>STUDY SURFACE</sup><br><br>
+      <strong>Search, mark, think, return</strong><br>
       <sub>Search, highlights, notes, copyable notes, and source-aware reading flow.</sub>
     </td>
-    <td width="33%" valign="top">
-      <strong>Reusable template</strong><br>
+    <td width="33%" valign="top" align="center">
+      <sup>AGENT OUTPUT</sup><br><br>
+      <strong>Reusable by default</strong><br>
       <sub>Swap in new content and produce a static site ready for local use or Vercel.</sub>
     </td>
   </tr>
   <tr>
-    <td width="33%" valign="top">
+    <td width="33%" valign="top" align="center">
+      <sup>LANGUAGE</sup><br><br>
       <strong>Optional bilingual mode</strong><br>
       <sub>Line-by-line reading support when the source should be studied across languages.</sub>
     </td>
-    <td width="33%" valign="top">
+    <td width="33%" valign="top" align="center">
+      <sup>MOOD</sup><br><br>
       <strong>Light and dark mode</strong><br>
       <sub>A calm porcelain reading surface plus a focused dark mode.</sub>
     </td>
-    <td width="33%" valign="top">
+    <td width="33%" valign="top" align="center">
+      <sup>REUSE</sup><br><br>
       <strong>Agent-friendly scaffolding</strong><br>
       <sub>Bundled scripts validate data, scaffold the reader, and smoke-test the output.</sub>
     </td>
@@ -67,26 +73,31 @@ Example: Paul Graham's epic essay,
 
 ## How It Works
 
-<p align="center">
-  <img src="docs/media/how-it-works.png" alt="Source material flowing through an agent into an interactive reading space" width="100%">
-</p>
-
 <table>
   <tr>
-    <td align="center" width="33%">
-      <strong>1. Drop in the source</strong><br>
-      <sub>Paste a link, upload a file, or point the agent at a long-form note.</sub>
+    <td width="30%" valign="top">
+      <sup>01 · SOURCE</sup><br><br>
+      <strong>Bring the material</strong><br><br>
+      <sub>Paste a link, point to a file, or drop in raw long-form text.</sub>
     </td>
-    <td align="center" width="33%">
-      <strong>2. Let the agent shape it</strong><br>
-      <sub>It finds chapters, sections, anchor quotes, study tools, and optional bilingual text.</sub>
+    <td width="5%" align="center" valign="middle">→</td>
+    <td width="30%" valign="top">
+      <sup>02 · AGENT</sup><br><br>
+      <strong>Shape the reading path</strong><br><br>
+      <sub>The skill identifies chapters, sections, anchor quotes, and useful study affordances.</sub>
     </td>
-    <td align="center" width="33%">
-      <strong>3. Open the reading space</strong><br>
-      <sub>A polished interactive site is generated with the reader experience already wired.</sub>
+    <td width="5%" align="center" valign="middle">→</td>
+    <td width="30%" valign="top">
+      <sup>03 · SPACE</sup><br><br>
+      <strong>Open the finished site</strong><br><br>
+      <sub>You get an interactive reading space with the details already wired.</sub>
     </td>
   </tr>
 </table>
+
+<br>
+
+> From plain text to a place you can move through, mark up, revisit, and share.
 
 <br>
 
