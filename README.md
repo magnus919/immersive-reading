@@ -86,36 +86,6 @@ Example: Paul Graham's epic essay,
 
 <br>
 
-## How It Works
-
-<table>
-  <tr>
-    <td width="30%" valign="top">
-      <sup>01 · SOURCE</sup><br><br>
-      <strong>Bring the material</strong><br><br>
-      <sub>Paste a link, point to a file, or drop in raw long-form text.</sub>
-    </td>
-    <td width="5%" align="center" valign="middle">→</td>
-    <td width="30%" valign="top">
-      <sup>02 · AGENT</sup><br><br>
-      <strong>Shape the reading path</strong><br><br>
-      <sub>The skill identifies chapters, sections, anchor quotes, and useful study affordances.</sub>
-    </td>
-    <td width="5%" align="center" valign="middle">→</td>
-    <td width="30%" valign="top">
-      <sup>03 · SPACE</sup><br><br>
-      <strong>Open the finished site</strong><br><br>
-      <sub>You get an interactive reading space with the details already wired.</sub>
-    </td>
-  </tr>
-</table>
-
-<br>
-
-> From plain text to a place you can move through, mark up, revisit, and share.
-
-<br>
-
 ## Quick Start
 
 <details open>
