@@ -9,7 +9,6 @@
   "files": [
     ".claude-plugin",
     "plugin.json",
-    "setup",
     "skills"
   ]
 }

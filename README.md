@@ -211,14 +211,6 @@ Replace `codex` with your agent name:
 npx skills add ryannli/immersive-reading -g -a codex -y
 ```
 
-For a local clone:
-
-```bash
-git clone https://github.com/ryannli/immersive-reading.git
-cd immersive-reading
-sh setup agent
-```
-
 </details>
 
 <br>
