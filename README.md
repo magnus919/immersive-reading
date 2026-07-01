@@ -34,37 +34,52 @@ Example: Paul Graham's epic essay,
 
 <table>
   <tr>
-    <td width="33%" valign="top" align="center">
-      <sup>READING FLOW</sup><br><br>
-      <strong>Chaptered, paced, memorable</strong><br>
-      <sub>Chapter openings, section beats, anchor quotes, and scroll-driven transitions.</sub>
+    <td width="42%" valign="top">
+      <sup>SOURCE MATERIAL</sup><br><br>
+      <strong>Plain long-form text</strong><br>
+      <sub>Essays, posts, transcripts, notes, papers, or local files.</sub><br><br>
+      <kbd>raw text</kbd> <kbd>source link</kbd> <kbd>local file</kbd>
     </td>
-    <td width="33%" valign="top" align="center">
-      <sup>STUDY SURFACE</sup><br><br>
-      <strong>Search, mark, think, return</strong><br>
-      <sub>Search, highlights, notes, copyable notes, and source-aware reading flow.</sub>
+    <td width="16%" align="center" valign="middle">
+      <strong>→</strong><br>
+      <kbd>agent shapes</kbd><br>
+      <strong>→</strong>
     </td>
-    <td width="33%" valign="top" align="center">
-      <sup>AGENT OUTPUT</sup><br><br>
-      <strong>Reusable by default</strong><br>
-      <sub>Swap in new content and produce a static site ready for local use or Vercel.</sub>
+    <td width="42%" valign="top">
+      <sup>GENERATED SPACE</sup><br><br>
+      <strong>A place to read, mark, and return</strong><br>
+      <sub>A structured site with chapters, highlights, notes, search, and reusable scaffolding.</sub><br><br>
+      <kbd>chapters</kbd> <kbd>highlights</kbd> <kbd>notes</kbd> <kbd>search</kbd>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="22%" valign="top" align="center">
+      <kbd>01</kbd><br><br>
+      <strong>Reading Path</strong>
+    </td>
+    <td width="78%" valign="top">
+      Chapter openings, section beats, anchor quotes, and scroll-driven transitions turn a wall of text into a path.
     </td>
   </tr>
   <tr>
-    <td width="33%" valign="top" align="center">
-      <sup>LANGUAGE</sup><br><br>
-      <strong>Optional bilingual mode</strong><br>
-      <sub>Line-by-line reading support when the source should be studied across languages.</sub>
+    <td width="22%" valign="top" align="center">
+      <kbd>02</kbd><br><br>
+      <strong>Study Surface</strong>
     </td>
-    <td width="33%" valign="top" align="center">
-      <sup>MOOD</sup><br><br>
-      <strong>Light and dark mode</strong><br>
-      <sub>A calm porcelain reading surface plus a focused dark mode.</sub>
+    <td width="78%" valign="top">
+      Search, highlights, notes, copyable notes, optional bilingual support, and light/dark mode make the source usable.
     </td>
-    <td width="33%" valign="top" align="center">
-      <sup>REUSE</sup><br><br>
-      <strong>Agent-friendly scaffolding</strong><br>
-      <sub>Bundled scripts validate data, scaffold the reader, and smoke-test the output.</sub>
+  </tr>
+  <tr>
+    <td width="22%" valign="top" align="center">
+      <kbd>03</kbd><br><br>
+      <strong>Reusable Template</strong>
+    </td>
+    <td width="78%" valign="top">
+      Bundled scripts validate article data, scaffold the reader, and smoke-test the output for local use or Vercel.
     </td>
   </tr>
 </table>
