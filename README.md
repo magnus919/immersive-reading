@@ -174,19 +174,22 @@ sh setup codex
 
 <br>
 
-## First Prompt
+## Start With Anything
 
 ```text
-Use $immersive-reading to turn ./article.md into a Reading Edition at ./reading-edition.
-Add Chinese bilingual mode.
+Use $immersive-reading on this article:
+https://paulgraham.com/greatwork.html
 ```
 
-For an English-only edition:
+For bilingual reading:
 
 ```text
-Use $immersive-reading to turn ./essay.md into a Reading Edition at ./essay-reader.
-No bilingual mode.
+Use $immersive-reading on this link and add Chinese bilingual mode:
+https://paulgraham.com/greatwork.html
 ```
+
+You can also paste text or point to a local file. The agent chooses where to
+create the site and tells you when it is ready.
 
 ## License
 

@@ -18,9 +18,13 @@ The skill separates judgment from deterministic work:
 
 1. **Intake**
    Ask only for missing essentials:
-   - source content or source URL/file
-   - whether to include bilingual mode and target language
-   - desired output folder and deployment target, if any
+   - source content, source URL, or source file
+   - whether to include bilingual mode and target language, if not already clear
+
+   Do not ask for an output folder by default. Choose a sensible local folder
+   name from the source title or article slug, then tell the user where the site
+   was created. Only ask for a destination when the user has special placement
+   or deployment requirements.
 
 2. **Source Handling**
    Treat the project as a local reading/study edition by default. Do not block
