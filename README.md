@@ -97,11 +97,11 @@ Install and run it as a Claude Code plugin:
 /plugin marketplace add ryannli/immersive-reading
 /plugin install immersive-reading@immersive-reading
 /reload-plugins
-/immersive-reading:immersive-reading https://paulgraham.com/greatwork.html
+/immersive-reading:immersive-reading
 ```
 
-Replace the last URL with any essay, post, transcript, note, paper, or local
-file you want to turn into a learning space.
+Then paste any essay, post, transcript, note, paper, URL, or local file you
+want to turn into a learning space.
 
 Or install it as an open agent skill:
 
