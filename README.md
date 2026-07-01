@@ -12,21 +12,8 @@ bilingual support.
 
 [![Start](https://img.shields.io/badge/Quick_Start-Install_now-111111?style=for-the-badge&labelColor=9A5A25)](#quick-start)
 [![Skill](https://img.shields.io/badge/Reusable_Skill-immersive--reading-111111?style=for-the-badge&labelColor=5B6675)](skills/immersive-reading/SKILL.md)
-[![Demo](https://img.shields.io/badge/Demo-Watch_the_X_post-111111?style=for-the-badge&labelColor=B87941)](https://x.com/ranli_thinker/status/2071738620860682365)
 
 </div>
-
-<br>
-
-## Not A Summary. A Co-Reading Space.
-
-Example: Paul Graham's epic essay,
-[How to Do Great Work](https://paulgraham.com/greatwork.html).
-
-| Before | After |
-| --- | --- |
-| [![Before: plain essay page](docs/media/how-to-do-great-work-before.gif)](https://paulgraham.com/greatwork.html) | [![After: immersive reading space](docs/media/how-to-do-great-work-after.gif)](https://x.com/ranli_thinker/status/2071738620860682365) |
-| [Open original essay](https://paulgraham.com/greatwork.html) | [Open live reading space](http://ranli.me/read-paul-graham) · [Watch the X post](https://x.com/ranli_thinker/status/2071738620860682365) |
 
 <br>
 
@@ -79,122 +66,55 @@ Example: Paul Graham's epic essay,
 
 ## Quick Start
 
-<details open>
-<summary><strong>Claude Code</strong></summary>
+This is a standard [Agent Skills](https://agentskills.io) skill. Install it with any SKILL.md-compatible agent:
 
-Install and run it as a Claude Code plugin. Send these as four separate
-Claude Code messages:
-
-```text
-/plugin marketplace add ryannli/immersive-reading
-```
-
-```text
-/plugin install immersive-reading@immersive-reading
-```
-
-```text
-/reload-plugins
-```
-
-```text
-/immersive-reading:immersive-reading
-```
-
-Then paste any essay, post, transcript, note, paper, URL, or local file you
-want to turn into a learning space.
-
-Or install it as an open agent skill:
+### Via git clone (Hermes Agent, any agent with a SKILL.md loader)
 
 ```bash
-npx skills add ryannli/immersive-reading
+git clone https://github.com/magnus919/immersive-reading.git
 ```
 
-Choose Claude Code if the installer asks. Then start a new Claude Code session
-and ask for `immersive-reading`.
-
-No-prompt install:
+Then symlink the skill or reference it directly:
 
 ```bash
-npx skills add ryannli/immersive-reading -g -a claude-code -y
+ln -s $(pwd)/immersive-reading/skills/immersive-reading ~/.hermes/skills/immersive-reading
 ```
 
-</details>
+Load it in-session with `skill_view(name="immersive-reading")` or trigger it by mentioning the source content you want to convert.
 
-<details>
-<summary><strong>Codex</strong></summary>
-
-Install the skill into your local Codex skills folder:
+### Via Skills CLI (Claude Code, Codex, Cursor, OpenCode, etc.)
 
 ```bash
-npx skills add ryannli/immersive-reading
+npx skills add magnus919/immersive-reading
 ```
 
-Choose Codex if the installer asks. Then start a new Codex session and use:
+Choose your agent when the installer asks. Then start a new session and use:
 
 ```text
-Use $immersive-reading on this article:
-https://paulgraham.com/greatwork.html
-```
-
-</details>
-
-<details>
-<summary><strong>Cursor</strong></summary>
-
-Install the skill into Cursor:
-
-```bash
-npx skills add ryannli/immersive-reading
-```
-
-Choose Cursor if the installer asks.
-
-</details>
-
-<details>
-<summary><strong>Antigravity CLI</strong></summary>
-
-```bash
-agy plugin install https://github.com/ryannli/immersive-reading.git
-```
-
-</details>
-
-<details>
-<summary><strong>Other SKILL.md-compatible agents</strong></summary>
-
-The Skills CLI can install this repo into supported coding agents. It fetches
-the `skills/immersive-reading` folder directly from GitHub; this repo does not
-need to be published as an npm package.
-
-Replace `codex` with your agent name:
-
-```bash
-npx skills add ryannli/immersive-reading -g -a codex -y
-```
-
-</details>
-
-<br>
-
-## Start With Anything
-
-```text
-Use $immersive-reading on this article:
-https://paulgraham.com/greatwork.html
+Use immersive-reading on this article:
+https://example.com/long-form-essay
 ```
 
 For bilingual reading:
 
 ```text
-Use $immersive-reading on this link and add Spanish bilingual mode:
-https://paulgraham.com/greatwork.html
+Use immersive-reading on this link and add Spanish bilingual mode:
+https://example.com/long-form-essay
 ```
 
 You can also paste text or point to a local file. The agent chooses where to
 create the site and tells you when it is ready.
 
+## Usage Notes
+
+- Preserve the bundled reader template. Do not redesign the UI from scratch unless necessary — the template already encodes polished interaction details.
+- The skill separates judgment (structure, quotes, summaries, translation) from deterministic work (scaffolding, validation, smoke tests).
+- Use the bundled scripts for scaffolding (`scaffold-reader.mjs`), validation (`validate-article-data.mjs`), and preview (`serve-reader.mjs`). See `skills/immersive-reading/SKILL.md` for the full workflow.
+
 ## License
 
 MIT.
+
+## Original Work
+
+This project is a fork of [ryannli/immersive-reading](https://github.com/ryannli/immersive-reading) by **Ran Li**. The original work provides the reader template, content model, and scripts that this project builds upon. See the [upstream repository](https://github.com/ryannli/immersive-reading) for the original project.

@@ -10,8 +10,6 @@
     "node": ">=18"
   },
   "files": [
-    ".claude-plugin",
-    "plugin.json",
     "skills"
   ]
 }
